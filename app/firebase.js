@@ -27,4 +27,23 @@ export const auth = getAuth(app);
 //export const db = getFirestore(app);
 
 // INICIAR CRUD
-const db = getFirestore(app);
+export const db = getFirestore(app);
+
+// FUNCION PARA GUARDAR DATOS
+export const saveTask = (title, description, userMail)=>{
+    addDoc(collection(db,"task")); 
+};
+// FUNCION PARA TRAER VARIOS DATOS DE FIREBASE
+export const getTasks = () => getDocs(collection(db,"task"));
+
+//FUNCION QUE TRAER DATOS A TIEMPO REAL
+export const OngetTasks = (callback) => onSnapshot(collection(db,"task"),(callback));
+
+// FUNCION PARA ELIMINAR
+export const deleteTask = (id) => deleteDoc(doc(db, "task", id));
+        
+//FUNCION PARA TRAER UN SOLO DATO
+export const getTask = (id) => getDoc(doc(db, "task", id));
+
+//FUNCION PARA ACTUALIZAR 
+export const updateTask = (id, newFields) => updateDoc(doc(db, "task", id), newFields);
