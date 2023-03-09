@@ -3,8 +3,8 @@ import { auth, OngetTasks } from "./app/firebase.js";
 import { loginCheck } from "./app/loginCheck.js";
 
 
-import "./app/signinForm";
-import "./app/signupForm";
+import "./app/signupForm.js";
+import "./app/signinForm.js";
 import "./app/logout.js";
 import "./app/postList.js";
 
@@ -16,6 +16,7 @@ import {
     getTasks, 
     updateTask
 } from "./app/firebase.js";
+
 
 let editSatus = false;
 let id = "";
@@ -50,5 +51,33 @@ onAuthStateChanged(auth, async (user)=>{
             console.log(error);
         }
         console.log(correo);
+        
+        const tasksContainer = document.getElementById("task-container");
+
+        OngetTasks((querySnapshot) => {
+            let html = "";
+            querySnapshot.forEach((doc) => {
+                const task = doc.data();
+                if(task.userMail == correo) {
+                    html += `
+                    <li>
+                        <h5>${task.title}</h5>
+                        <p>${task.description}</p>
+                    
+                        <div>
+                            <button id="${doc.id}">
+                                Eliminar
+                            </button>
+
+                            <button id="${doc.id}">
+                                Editar
+                            </button>
+
+                        </div>
+                    </li>
+                    `
+                }
+            });
+        })
     }
 })

@@ -11,14 +11,14 @@ import { getFirestore, collection, addDoc, getDocs, onSnapshot, deleteDoc, doc, 
 //REEMPLAZAR POR TUS PROPIAR CREDENCIALES DE FIREBASE
 //====================================================
 const firebaseConfig = {
-    apiKey: "AIzaSyDoqtjthHH4p41v-T_OSwZfjuWFDiqMx4A",
-    authDomain: "fir-demo-47ca8.firebaseapp.com",
-    projectId: "fir-demo-47ca8",
-    storageBucket: "fir-demo-47ca8.appspot.com",
-    messagingSenderId: "406464430604",
-    appId: "1:406464430604:web:09e8800712d6dac9d26429",
-    measurementId: "G-GRP5HLGXKY",
-};
+    apiKey: "AIzaSyCZkD-wjeZ0rZ1lPr4dWNb5jNhyyooiIuo",
+    authDomain: "unidad4-84750.firebaseapp.com",
+    projectId: "unidad4-84750",
+    storageBucket: "unidad4-84750.appspot.com",
+    messagingSenderId: "1011799768835",
+    appId: "1:1011799768835:web:18620ddacb570b3265f336",
+    measurementId: "G-Y4VC4BSMFX"
+  };
 // Initialize Firebase
 export const app = initializeApp(firebaseConfig); //recordar export es para poder importar app en otros archivos
 //console.log(app);
