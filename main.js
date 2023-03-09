@@ -65,11 +65,11 @@ onAuthStateChanged(auth, async (user)=>{
                         <p>${task.description}</p>
                     
                         <div>
-                            <button id="${doc.id}">
+                            <button class="btn-delete" id="${doc.id}">
                                 Eliminar
                             </button>
 
-                            <button id="${doc.id}">
+                            <button class="btn-edit" id="${doc.id}">
                                 Editar
                             </button>
 
@@ -78,6 +78,34 @@ onAuthStateChanged(auth, async (user)=>{
                     `
                 }
             });
+            tasksContainer.innerHTML = html;
+
+            // ELIMINAR
+            const btnsDelete = tasksContainer.querySelectorAll(".btn-delete");
+
+            btnsDelete.forEach((btn) => {
+                btn.addEventListener("click", (event) =>{
+                    deleteTask(event.target.dataset.id);
+                });
+            });
+
+
+            // EDITAR
+            const btnsEdit = tasksContainer.querySelectorAll(".btn-edit");
+
+            btnsEdit.forEach((btn) => {
+                btn.addEventListener("click",async (event) =>{
+                    const doc = await getTask(event.target.dataset.id);
+                    const task = doc.data();
+                    const taskForm2 = document.getElementById("task-form");
+
+                    taskForm2["task-title"].value = task.title;
+                    taskForm2["task-description"].value = task.description;
+
+                })
+            });
+            
+
         })
     }
 })
