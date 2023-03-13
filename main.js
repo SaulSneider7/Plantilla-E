@@ -38,7 +38,7 @@ onAuthStateChanged(auth, async (user) => {
           });
           editSatus = false;
           id = "";
-          taskForm["btn-task-form"].innerHtml = "Save";
+          taskform["btn-task-form"].innerHtml = "Guardar";
         } else {
           saveTask(title.value, description.value, user.email);
         }
@@ -62,11 +62,11 @@ onAuthStateChanged(auth, async (user) => {
                         <p>${task.description}</p>
                     
                         <div>
-                            <button class="btn-delete" id="${doc.id}">
+                            <button class="btn-delete" data-id="${doc.id}">
                                 Eliminar
                             </button>
 
-                            <button class="btn-edit" id="${doc.id}">
+                            <button class="btn-edit" data-id="${doc.id}">
                                 Editar
                             </button>
 
